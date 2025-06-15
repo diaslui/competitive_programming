@@ -21,6 +21,6 @@ int main(){
 
     }
 
-    cout << m - total;
+    cout << m - total << endl;
     return 0;
 }

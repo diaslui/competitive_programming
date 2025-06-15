@@ -6,6 +6,8 @@
 *.o
 *.so
 *.out
+*a
+*d
 
 # Packages #
 *.7z
