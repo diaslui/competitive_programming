@@ -1,5 +1,5 @@
 /*
- * Dieta
+ * Dieta O(n)
  * Fase 1 — OBI2025 (Nivel 2)
  * https://github.com/diaslui/competitive_programming
 */
