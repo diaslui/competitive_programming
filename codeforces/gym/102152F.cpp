@@ -8,9 +8,9 @@ bool solve(string s){
  int count = 1;
  for(int i = 1; i < s.size(); i++){
     char c = s[i];
-    bool isUpper = 'A' - c >= 0 && 'A' - c < 26;
+    bool isUpper =  c - 'A' >= 0 && c - 'A' < 26;
     
-    cout << c << " / " << isUpper << "  \n";
+	   //  cout << c << " / " << isUpper << "  \n";
 if (isUpper){
      count++;
   }
