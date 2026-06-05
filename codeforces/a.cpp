@@ -4,9 +4,12 @@ using namespace std;
 
 int main()
 {
-
-    int n = 2;
-    vector<int> adj(n + 2, vector<int>());
-
+   string s; cin >> s;
+   int f = s[0];
+   if (f > 96){
+      s[0] -= 32;
+    } 
+   
+    cout << s << "\n";
     return 0;
 }

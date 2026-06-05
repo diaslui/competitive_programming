@@ -5,31 +5,49 @@ using namespace std;
 
 int main(){
 
-  string s,match; cin >> s;
+  int a,b; a = 0; b = 0;
+  string s; cin >> s;
   
-  int count = 0;
-  for (char c: s){
-    match.push_back(c);
-    if (match.size() == 2){
-        
-       if (match == "BA" || match == "AB"){
-            count++;
-            match = "";
-       }else{
-            match.erase(0,1);
-       }
-     }
-   
+ 
+  for (int i=1; i < s.size(); i++){
+   if (a != 1 && s[i-1] == 'A' && s[i] == 'B'){
+      a = 1;
+      i++;
+      continue;
+    } 
+   if (s[i-1] == 'B' && s[i] == 'A' && a == 1){
+     a = 2; 
+     break;
     }
    
-
-    if (count >= 2){
-    cout << "YES"; 
-   }else{
-    cout << "NO";
+   }
+    
+  
+  for (int i=s.size()-2; i > -1; i--){
+   if (b != 1 && s[i+1] == 'B' && s[i] == 'A'){
+      b = 1;
+      i--;
+      continue;
+    } 
+  
+   if (s[i+1] == 'A' && s[i] == 'B' && b == 1){
+     b = 2; 
+     break;
+    }
+   
    }
 
 
-  cout << "\n";
+
+   if (b == 2 || a == 2){
+   cout << "YES";
+   }
+   else{
+    cout << "NO";
+     } 
+
+
+ 
+   cout << "\n";
   return 0;
 }
