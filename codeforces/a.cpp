@@ -2,14 +2,25 @@
 
 using namespace std;
 
-int main()
-{
-   string s; cin >> s;
-   int f = s[0];
-   if (f > 96){
-      s[0] -= 32;
-    } 
-   
-    cout << s << "\n";
-    return 0;
+#define INF 1e9 * 10
+#define endl "\n"
+#define ll long long
+
+int main(){
+   ios::sync_with_stdio(0);
+   cin.tie(0);
+
+   int t; cin >> t;
+   while (t--){
+   int x;
+   cin >> x;
+
+   cout << x << "\n";
+ 
+
 }
+
+
+   return 0;
+}
+
