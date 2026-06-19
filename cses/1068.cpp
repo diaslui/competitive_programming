@@ -4,10 +4,14 @@ using namespace std;
 
 int main(){
   
- int n; cin >> n;
- while (n != 1){
-
-  cout << n << " ";
+ long long n; cin >> n;
+ while ( 1){
+  cout << n;
+  if (n > 1){
+   cout << " ";
+  }else{
+   cout << endl;break;
+  }
   if (n % 2 == 0){
     n /= 2;
   }else{
@@ -15,8 +19,6 @@ int main(){
     n++;  
   }
  }
-
- cout << 1 << "\n";
 
 
 
