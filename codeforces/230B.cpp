@@ -8,24 +8,16 @@ int main()
 
     int n;
     cin >> n;
-    int lastkmemo = 0;
 
     auto prime = [&](long long k) -> bool
-    {
-        if (k <= 0)
-            return 0;
-        if (k == 2)
-            return 1;
-        if (k % 2 == 0)
-            return 0;
+      {
+        if (k <= 1) return 0;
+        if (k == 2) return 1;
+        if (k % 2 == 0) return 0;
 
         for (int i = 3; i <= sqrt(k); i += 2)
         {
-
-            if (k % i == 0)
-            {
-                return 0;
-            }
+            if (k % i == 0) return 0;
         }
 
         return 1;

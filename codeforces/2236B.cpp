@@ -14,14 +14,28 @@ const int MOD = 1e9 + 7;
 int main(){_
 
    int t; cin >> t; while (t--){
-   int n, k, c; cin >> n >> k; c=0;
+   int n, k; cin >> n >> k;
    string s; cin >> s;
-   for (int i=0; i < n-k; i++){
-      if (s[i] == '1') c++;
+   vector<int> v(k, 0);
+   for (int i=0; i < n; i++){
+      if (s[i] == '1'){
+         v[i%k]++;
+      }
    }
 
-   cout << (c % 2 == 0 ? "YES" : "NO");
-   cout << endl;
+   int ans = 1;
+   for (int i=0; i < v.size(); i++){
+      if (v[i] % 2 == 0) continue;
+      ans = 0; break;
+   }
+
+   if (ans){
+      cout << "YES" << endl;
+   }else{
+      cout << "NO" << endl;
+   }
+  
+
 }
    return 0;
 }
