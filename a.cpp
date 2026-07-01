@@ -11,47 +11,43 @@ const ll LINF = 0x3f3f3f3f3f3f3f3fll;
 #define endl "\n"
 #define dgb(x) cout << #x << " = " << x << "\n";
 
+vector<int> used(10, 0);
+
+void backtracking(vector<string>& r,string s, string o){
+
+   if (o.size() == 3){
+      r.push_back(o);
+      return;
+   }
+
+   for (int i=0; i < s.size(); i++){
+      if (used[i]) continue;
+
+      o.push_back(s[i]);
+      used[i] = 1;
+      backtracking(r, s, o);
+      used[i] = 0;
+      o.pop_back();
+   }
+}
+
+
+
+vector<string> permute(string s){
+   
+   vector<string> r;
+   backtracking(r,s, "");
+   return r;
+}
+
 int main(){_
    
-   int t; cin >> t;
-   while (t--){
-   
-      int n, c; cin >> n >> c;
-      vector<int> a(n);
-      vector<int> b(n);
-      vector<int> sb(n);
-      for (int i=0; i < n; i++){
-         cin >> a[i];
-      };
-      for (int i=0; i < n; i++){
-         cin >> b[i];
-         sb[i] = b[i];
-      };
-        
-      sort(a.begin(), a.end());
-      sort(sb.begin(), sb.end());
-
-      int ans, order; ans = 0; order = 0;
-      for (int i=0; i < n; i++){
-      
-      int diff = a[i] - sb[i];
-      if (diff < 0){
-         ans = -1;
-         break;
-      }
-      ans += diff;
-      
-      if (a[i] - diff != b[i]) order = 1;
-      }
-
-      if (ans == -1){
-         cout << ans << endl; continue;
-      }
-
-      if (order == 1) ans += c;
-      cout << ans << endl;
-
+   string a = "ABC";
+   for (string s: permute(a)){
+      cout << s << endl;
    }
+
+
    return 0;
 }
 
