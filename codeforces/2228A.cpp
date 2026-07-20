@@ -13,31 +13,26 @@ int main(){
 
    int t; cin >> t;
    while (t--){
-   int n; cin >> n;
-   vector<int> v(n);
+   int n, ans; cin >> n;
+
+   int c1, c2, c0;
+   c1 = 0; c2 = 0; c0 = 0;
    for (int i=0; i < n; i++){
-    cin >> v[i];
-   }
-   int ans = 0;
-   for (int i=0; i < n; i++){
-     
-   if (v[i] < 0) continue;
-   if (v[i] % 3 == 0){
-      v[i] = -1;ans++;
-      continue;
-   }
-   for (int j=0; j < n; j++){
-   if (j == i) continue;
-   if (v[j] < 0) continue;
-   if ((v[i] + v[j]) % 3 == 0){
-      ans++;
-      v[i] = -1, v[j] = -1;
-      break;
+    int v;
+    cin >> v;
+    if (v == 0) c0++;
+    if (v == 1) c1++;
+    if (v == 2) c2++;
    }
 
-   }
-   }
-  cout << ans << endl; 
+   ans = min(c1,c2);
+   c1 -= ans;
+   c2 -= ans;
+   ans += (c1/3);
+   ans += (c2/3);
+   ans += c0;
+
+   cout << ans << endl; 
    }
 
 
