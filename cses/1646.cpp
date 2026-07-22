@@ -21,19 +21,34 @@ using vvi = vector<vi>;
 #define dbg(x) cout << #x << " = " << x << "\n";
 #define all(x) x.begin(), x.end()
 
-int main(){_
+void solve(){
+   
+   int n, q; cin >> n >> q;
+   vi v(n);
+   vector<ll> prefix(n+1, 0);
 
-   int t; cin >> t;
-   while (t--){
-   ll n; cin >> n;
-   int ans = 0;   
-   if (n & (n-1)) ans = 1;
+   for (int i=1; i<=n; i++){
+      cin >> v[i];
 
-   cout << (ans ? "YES" : "NO") << endl;
-
-
+      if (i == 1){
+         prefix[i] = v[i];
+      }else{
+         prefix[i] = v[i] + prefix[i-1]; 
+      }
    }
 
+   while (q--){
+      int a, b; cin >> a >> b;
+      ll ans = prefix[b] - prefix[a-1];
+      cout << ans << endl;
+   }
+
+
+}
+
+int main(){_
+   int t = 1;
+   while (t--) solve();
    return 0;
 }
 

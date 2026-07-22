@@ -21,19 +21,29 @@ using vvi = vector<vi>;
 #define dbg(x) cout << #x << " = " << x << "\n";
 #define all(x) x.begin(), x.end()
 
-int main(){_
+void solve(){
 
-   int t; cin >> t;
-   while (t--){
-   ll n; cin >> n;
-   int ans = 0;   
-   if (n & (n-1)) ans = 1;
-
-   cout << (ans ? "YES" : "NO") << endl;
-
-
+   int n; cin >> n;
+   vector<int> v(101, 0);
+   int m = INF;
+   int ans = 0;
+   for (int i=0; i < n; i++){
+      int x; cin >> x;
+      v[x]++;
+      m = min(m, x);
+   }
+   v[m] = 0;
+   for (int i=0; i < v.sz(); i++){
+      ans += v[i];
    }
 
+   cout << ans << endl;
+}
+
+int main(){_
+   int t = 1;
+   cin >> t;
+   while (t--) solve();
    return 0;
 }
 
