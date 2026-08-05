@@ -21,32 +21,34 @@ using vvi = vector<vi>;
 #define dbg(x) cout << #x << " = " << x << "\n";
 #define all(x) x.begin(), x.end()
 
-vi dp;
-
-int main(){_
+void solve(){
 
    int n, x; cin >> n >> x;
-   dp.assign(x+1, -1);
+   vector<int> coins(n);
+   for (int i = 0; i < n; i++){
+       cin >> coins[i];
+   }
+   vector<int> dp(x+1, -1);
    dp[0] = 0;
-   cout << "ok\n";
-   for (int i=0; i < n; i++){
-      int y; cin >> y;
-      dp[y] = 1;
+   for (int i=1; i <= x; i++){
+       int m = INF;
+
+       for (int coin : coins){
+          int index = i - coin; if (index < 0) continue;
+          m = min(m, dp[index] + 1);
+       }
+
+      dp[i] = m;
    }
-  
-
-  for (int i=1; i <= x; i++){
-      int l = INF;
-      for (int j=0; j < 3; j++){
-         int sum = j + dp[i-1];
-         if (sum != i) continue;
-         l = min(l, sum);
-      }
-
-      dbg(l);
-   }
+   if (dp[x] == INF) dp[x] = -1; 
+   cout << dp[x] << endl;
 
 
+}
+
+int main(){_
+   int t = 1;
+   while (t--) solve();
    return 0;
 }
 
