@@ -24,37 +24,22 @@ using vvi = vector<vi>;
 void solve(){
 
    int n; cin >> n;
-   vector<ll> v(n); 
-   map<ll, ll> m;
-   stack<ll> nextg;
-   for (int i=0; i < n; i++){
-      cin >> v[i];
-   }
+   vector<ll> v(n);
+   for(int i=0; i < n; i++) cin >> v[i];
+   
+   ll ans = -1;
 
-
-   for (int i=n; i > -1; i--){
-      while (!nextg.empty() && nextg.top() <= v[i]){
-         m[nextg.top()] = max(v[i], m[nextg.top()]);
-         nextg.pop();
-      }
-
-      nextg.push(v[i]);
-   }
-
-
-   ll ans = 0;
-   for (auto [k,v]: m){
-      cout <<  "his: " << k << " " << v << endl;
-      ans = max(k * v, ans);
+   for (int i=0; i < n-1; i++){
+      ans = max(ans, v[i] * v[i+1]);
    }
 
    cout << ans << endl;
 
-
-}
+  }
 
 int main(){_
    int t = 1;
+   cin >> t;
    while (t--) solve();
    return 0;
 }

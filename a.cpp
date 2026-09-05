@@ -9,45 +9,27 @@ const int INF = 0x3f3f3f3f;
 const ll LINF = 0x3f3f3f3f3f3f3f3fll;
 
 #define endl "\n"
-#define dgb(x) cout << #x << " = " << x << "\n";
+#define dbg(x) cout << #x << " = " << x << "\n";
 
-vector<int> used(10, 0);
+set<string> s;
 
-void backtracking(vector<string>& r,string s, string o){
-
-   if (o.size() == 3){
-      r.push_back(o);
-      return;
-   }
-
-   for (int i=0; i < s.size(); i++){
-      if (used[i]) continue;
-
-      o.push_back(s[i]);
-      used[i] = 1;
-      backtracking(r, s, o);
-      used[i] = 0;
-      o.pop_back();
+void bt(string curr){
+   if (s.count(curr)) return;
+   s.insert(curr);
+   cout << curr << endl;
+   for (int i=0; i < 3; i++){
+        curr[i] = curr[i] == '0' ? '1' : '0';      
+        bt(curr);     
+        curr[i] = curr[i] == '0' ? '1' : '0';      
    }
 }
 
-
-
-vector<string> permute(string s){
-   
-   vector<string> r;
-   backtracking(r,s, "");
-   return r;
-}
 
 int main(){_
-   
-   string a = "ABC";
-   for (string s: permute(a)){
-      cout << s << endl;
-   }
 
-
-   return 0;
+  string x; cin >> x;
+  bt(x);
+  cout << x << endl;
+  return 0;
 }
 

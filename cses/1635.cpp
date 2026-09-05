@@ -24,21 +24,24 @@ using vvi = vector<vi>;
 void solve(){
 
    int n, x; cin >> n >> x;
-   
-   vi dp(x+1, 0);
-   vi coins(n);
-   for (int i=0; i < n; i++){
-      cin >> coins[i];
-   };
+   ll coins[n];
+   ll dp[x+1];
+   for (int i=0; i < n; i++) cin >> coins[i];
    dp[0] = 1;
 
    for (int i=1; i <= x; i++){
+      l w = 0;
+      
       for (int c: coins){
-         if (i - c < 0) continue;
-         dp[i] = (dp[i-c] + dp[i]) % MOD;
+      if (i - c < 0) continue;
+         w += dp[i-c] % MOD;
       }
+      w %= MOD;
+      dp[i] = w;
    }
+   
    cout << dp[x] << endl;
+
 }
 
 int main(){_

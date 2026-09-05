@@ -23,51 +23,31 @@ using vvi = vector<vi>;
 
 void solve(){
 
+
    int n; cin >> n;
-   vector<int> v(n);
-   int ans = n;
-   for (int i=0; i < n; i++){
-      cin >> v[i];
-      if (v[i] != 3 && v[i] != 0) ans--;
-   }
-
+   vvi dp(n+1, vector<int>(3, INF));
+   dp[0][0] = 0;
+   dp[0][1] = 0;
+   dp[0][2] = 0;
+   for (int i=1; i <= n; i++){
    
-   for (int i=0; i < n; i++){
-      if (v[i] != 3) continue;
-      int a, b; a = 0; b = 0;
-      if (i - 1 > -1){
-         a = v[i - 1];
-      }
-
-      if (i + 1 < n){
-         b = v[i + 1];
-      }
-
-      int c = 0;
+      int x; cin >> x;
       
-      if ((a == 1 && b == 2) || (a == 2 && b == 1)){
-            continue;
+      dp[i][0] = 1 + min({dp[i-1][0], dp[i-1][1], dp[i-1][2]});
+
+      if (x == 1 || x == 3){
+         dp[i][1] = min(dp[i-1][0], dp[i-1][2]);
       }
       
-      if (b != 1 && a == 2){
-         c = 1;
-         ans--;
+      if (x == 2 || x == 3){
+         dp[i][2] = min(dp[i-1][0], dp[i-1][1]);
       }
-   
-      if (a != 2 && b == 3){
-         ans--;
-         c = 2;
-      }
-
-      v[i] = c;
    }
 
-   for (int i=1; i < n; i++){
-       if (v[i] == v[i-1] && (v[i] == 1 || v[i] == 2)) ans++;
-   }
-
-
+   int ans = min({dp[n][0], dp[n][1], dp[n][2]});
    cout << ans << endl;
+   
+
 }
 
 int main(){_

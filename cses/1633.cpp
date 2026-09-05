@@ -21,26 +21,29 @@ using vvi = vector<vi>;
 #define dbg(x) cout << #x << " = " << x << "\n";
 #define all(x) x.begin(), x.end()
 
-vi dp;
+void solve(){
+   
+   int n; cin >> n;
+   vi dp(6, 0);
+   dp[0] = 1;
+   dp[1] = 1;
+
+   for (int i=2; i <= n; i++){
+      int v = 0;
+      for (int j=0; j < min(6, i); j++){
+         v += (dp[j] % MOD);
+         v %= MOD;
+      }
+      dp[i % 6] = v;
+   }
+
+   cout << dp[n % 6] << endl;
+
+}
 
 int main(){_
-
-  int n; cin >> n; 
-  dp.assign(n+1, -1);
-  dp[0] = 1;
-  for (int i=1; i <= n; i++){
-   int l = 0;
-   for (int j=1; j <= 6; j++){
-      
-      int idx = i - j;
-      if (idx < 0) continue;
-      l = dp[idx] % MOD + l % MOD; 
-
-   }
-   dp[i] = l % MOD;
-  }
-
-  cout << dp[n] << endl;
+   int t = 1;
+   while (t--) solve();
    return 0;
 }
 

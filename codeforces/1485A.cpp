@@ -15,7 +15,7 @@ int main(){
    
    int a, b; 
    cin >> a >> b;
-   int ans = 1e9;
+   int ans = 1e9 + 1;
    
    for (int s = 0; s <= 30; s++){
       int tb = b + s;
