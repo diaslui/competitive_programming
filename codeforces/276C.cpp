@@ -41,6 +41,7 @@ int main(){_
    sort(freq.begin(), freq.end());
    sort(v.begin(), v.end());
 
+
    ll ans = 0;
    for (int i=0; i < n; i++){
       ans += (ll)v[i] * freq[i];
